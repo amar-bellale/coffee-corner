@@ -1,14 +1,15 @@
 package com.ccc.service;
 
 import com.ccc.dto.Order;
+import com.ccc.util.PrintUtil;
 
 /**
  * A service class with the receipt printing responsibility
  */
 public class ReceiptService {
 
-    private static final String PAID_ITEM_FORMATTER = "\n%-40s %4.2f";
-    private static final String DISCOUNTED_ITEM_FORMATTER = "\n%-39s %4.2f";
+    private static final String PAID_ITEM_FORMATTER = "%n%-40s %4.2f";
+    private static final String DISCOUNTED_ITEM_FORMATTER = "%n%-39s %4.2f";
     private ReceiptService() {
     }
 
@@ -55,30 +56,30 @@ public class ReceiptService {
     }
 
     private static void appendTitle(String title) {
-        System.out.printf("\n%s", title);
+        PrintUtil.printf("%n%s", title);
     }
 
     private static void appendHeaders() {
         appendSeparator();
-        System.out.printf("\n%-40s %6s", "Item Description", "Amount");
+        PrintUtil.printf("%n%-40s %6s", "Item Description", "Amount");
         appendSeparator();
     }
 
     private static void appendRows(String formatter, String desc, double amount) {
-        System.out.printf(formatter, desc, amount);
+        PrintUtil.printf(formatter, desc, amount);
     }
 
     private static void appendFooter(double total) {
         appendSeparator();
-        System.out.printf(PAID_ITEM_FORMATTER, "Total", total);
+        PrintUtil.printf(PAID_ITEM_FORMATTER, "Total", total);
         appendSeparator();
-        System.out.printf("\n%s", centerString(48, "Thank you for your visit!"));
-        appendSeparator();
-        System.out.println();
+        PrintUtil.printf("%n%s", centerString(48, "Thank you for your visit!"));
+        PrintUtil.printf("%n-----------------------------------------------%n%n");
+
     }
 
     private static void appendSeparator() {
-        System.out.printf("\n-----------------------------------------------");
+        PrintUtil.printf("%n-----------------------------------------------");
     }
 
     public static String centerString (int width, String s) {
