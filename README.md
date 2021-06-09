@@ -53,7 +53,7 @@ A typical execution of the program, with the below input.
 * Has customer stamp card = Y
 * Number of stamps on the card = 3
 
-Would result in the something like below on the screen.
+Would result in something like below, on the screen.
 
     ***** Welcome to Charlene's Coffee Corner *****
     
